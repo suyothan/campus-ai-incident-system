@@ -208,6 +208,14 @@ async def export_csv():
     )
 
 
+@app.get("/api/sync-bigquery")
+@app.post("/api/sync-bigquery")
+async def sync_bigquery():
+    """Sync all operational incidents into Google BigQuery warehouse"""
+    count = db_service.sync_all_to_bigquery()
+    return {"success": True, "synced_incidents": count, "message": f"Successfully synced {count} incidents to BigQuery"}
+
+
 @app.get("/health")
 async def health_check():
     """Google Cloud Run container health check probe"""

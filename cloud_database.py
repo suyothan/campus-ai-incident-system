@@ -137,6 +137,45 @@ class IncidentDatabaseService:
         except Exception as e:
             print(f"BigQuery stream note: {e}")
 
+    def sync_all_to_bigquery(self) -> int:
+        project_id = GCP_PROJECT_ID or "college-events-cc"
+        try:
+            from google.cloud import bigquery
+            client = bigquery.Client(project=project_id)
+            table_id = f"{project_id}.campus_incidents_analytics.incident_events"
+            with open(INCIDENTS_FILE, "r", encoding="utf-8") as f:
+                records = json.load(f)
+            if not records:
+                return 0
+            rows = []
+            for r in records:
+                diag = r.get("ai_diagnosis", {})
+                rows.append({
+                    "incident_id": r.get("id"),
+                    "student_name": r.get("student_name"),
+                    "roll_no": r.get("roll_no"),
+                    "department": r.get("department"),
+                    "building": r.get("building"),
+                    "room": r.get("room"),
+                    "title": r.get("title"),
+                    "category": diag.get("category", "General"),
+                    "severity": diag.get("severity", "Moderate"),
+                    "hazard_detected": bool(diag.get("hazard_detected", False)),
+                    "hazard_type": diag.get("hazard_type", "None"),
+                    "status": r.get("status", "Reported"),
+                    "assigned_technician": r.get("assigned_technician", "Campus Operations"),
+                    "confidence_score": int(diag.get("confidence_score", 90)),
+                    "resolved_at": r.get("resolved_at")
+                })
+            errors = client.insert_rows_json(table_id, rows)
+            if not errors:
+                return len(rows)
+            print(f"Sync errors: {errors}")
+            return 0
+        except Exception as e:
+            print(f"BigQuery sync error: {e}")
+            return 0
+
     def update_incident_status(self, incident_id: str, new_status: str, technician: Optional[str] = None) -> Optional[Dict[str, Any]]:
         with open(INCIDENTS_FILE, "r", encoding="utf-8") as f:
             records = json.load(f)
