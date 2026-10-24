@@ -100,7 +100,42 @@ class IncidentDatabaseService:
         with open(INCIDENTS_FILE, "w", encoding="utf-8") as f:
             json.dump(records, f, indent=2)
 
+        # Stream directly to BigQuery if in GCP environment
+        self._stream_to_bigquery(record)
+
         return record
+
+    def _stream_to_bigquery(self, record: Dict[str, Any]):
+        project_id = GCP_PROJECT_ID or "college-events-cc"
+        try:
+            from google.cloud import bigquery
+            client = bigquery.Client(project=project_id)
+            table_id = f"{project_id}.campus_incidents_analytics.incident_events"
+            diag = record.get("ai_diagnosis", {})
+            rows = [{
+                "incident_id": record.get("id"),
+                "student_name": record.get("student_name"),
+                "roll_no": record.get("roll_no"),
+                "department": record.get("department"),
+                "building": record.get("building"),
+                "room": record.get("room"),
+                "title": record.get("title"),
+                "category": diag.get("category", "General"),
+                "severity": diag.get("severity", "Moderate"),
+                "hazard_detected": bool(diag.get("hazard_detected", False)),
+                "hazard_type": diag.get("hazard_type", "None"),
+                "status": record.get("status", "Reported"),
+                "assigned_technician": record.get("assigned_technician", "Campus Operations"),
+                "confidence_score": int(diag.get("confidence_score", 90)),
+                "resolved_at": None
+            }]
+            errors = client.insert_rows_json(table_id, rows)
+            if errors:
+                print(f"BigQuery streaming errors: {errors}")
+            else:
+                print(f"BigQuery streamed incident {record.get('id')} to {table_id}")
+        except Exception as e:
+            print(f"BigQuery stream note: {e}")
 
     def update_incident_status(self, incident_id: str, new_status: str, technician: Optional[str] = None) -> Optional[Dict[str, Any]]:
         with open(INCIDENTS_FILE, "r", encoding="utf-8") as f:
