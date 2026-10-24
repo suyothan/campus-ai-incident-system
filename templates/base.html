@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title or "CampusAI - Smart Facility Diagnostic Platform" }}</title>
+    
+    <!-- Google Fonts: Editorial Serif + Inter + Monospace (ElevenLabs Design Spec) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js for Cloud Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom Styling (ElevenLabs Editorial Theme) -->
+    <link rel="stylesheet" href="/static/css/style.css?v=elevenlabs-v2">
+    <!-- Early Theme Initializer (Defaults to ElevenLabs Light Mode) -->
+    <script>
+        (function() {
+            var saved = localStorage.getItem('campusai_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand-group">
+                <a href="/" class="college-logo-link" title="Dr. Vishwanath Karad MIT World Peace University, Pune">
+                    <img src="/static/images/mit_wpu_logo.png" alt="MIT-WPU Pune Logo" class="college-logo-img">
+                </a>
+                <div class="brand-divider"></div>
+                <a href="/" class="brand-logo">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-title">CampusAI</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="/" class="nav-link {% if request.url.path == '/' %}active{% endif %}">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Report Incident
+                </a>
+                <a href="/dispatcher" class="nav-link {% if request.url.path == '/dispatcher' %}active{% endif %}">
+                    <i class="fa-solid fa-clipboard-list"></i> Maintenance Dispatcher
+                </a>
+                <a href="/analytics" class="nav-link {% if request.url.path == '/analytics' %}active{% endif %}">
+                    <i class="fa-solid fa-chart-pie"></i> Executive Analytics
+                </a>
+                <a href="/architecture" class="nav-link {% if request.url.path == '/architecture' %}active{% endif %}">
+                    <i class="fa-solid fa-network-wired"></i> GCP Architecture
+                </a>
+            </nav>
+
+            <div class="nav-badges">
+                <button type="button" id="themeToggleBtn" class="theme-toggle-pill" onclick="toggleTheme()" aria-label="Toggle Light/Dark Theme">
+                    <i class="fa-regular fa-moon" id="themeIcon"></i>
+                    <span id="themeLabel">Dark Mode</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>CampusAI: Multimodal Infrastructure & Hazard Diagnostics</h4>
+                <p>Enterprise Serverless Cloud Architecture • Built for Google Cloud Platform</p>
+            </div>
+            <div class="footer-services">
+                <span class="service-tag"><i class="fa-solid fa-server"></i> Cloud Run</span>
+                <span class="service-tag"><i class="fa-solid fa-box-archive"></i> Cloud Storage</span>
+                <span class="service-tag"><i class="fa-solid fa-brain"></i> Vertex AI / Gemini</span>
+                <span class="service-tag"><i class="fa-solid fa-database"></i> Firestore</span>
+                <span class="service-tag"><i class="fa-solid fa-cubes"></i> BigQuery</span>
+                <span class="service-tag"><i class="fa-solid fa-chart-simple"></i> Looker Studio</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Client-side script -->
+    <script src="/static/js/main.js?v=6"></script>
+    <script>
+        function toggleTheme() {
+            var current = document.documentElement.getAttribute('data-theme') || 'light';
+            var next = (current === 'light') ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('campusai_theme', next);
+            updateThemeButton(next);
+        }
+
+        function updateThemeButton(theme) {
+            var icon = document.getElementById('themeIcon');
+            var label = document.getElementById('themeLabel');
+            if (!icon || !label) return;
+            if (theme === 'dark') {
+                icon.className = 'fa-regular fa-sun';
+                label.textContent = 'Light Mode';
+            } else {
+                icon.className = 'fa-regular fa-moon';
+                label.textContent = 'Dark Mode';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var current = document.documentElement.getAttribute('data-theme') || 'light';
+            updateThemeButton(current);
+        });
+    </script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

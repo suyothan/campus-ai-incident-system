@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-container">
+    <section class="architecture-header">
+        <span class="analytics-badge">
+            <i class="fa-solid fa-cloud"></i> Google Cloud Architecture Blueprint
+        </span>
+        <h1 class="page-title">Enterprise Cloud Computing System Architecture</h1>
+        <p class="page-subtitle">
+            Comprehensive breakdown of how <strong>Google Cloud Run</strong>, <strong>Cloud Storage</strong>, <strong>Vertex AI / Gemini Vision</strong>, <strong>Cloud Firestore</strong>, <strong>BigQuery</strong>, and <strong>Looker Studio</strong> interconnect.
+        </p>
+    </section>
+
+    <!-- Architecture Visual Flow (6 Services) -->
+    <section class="arch-flow-grid">
+        <div class="arch-card">
+            <div class="arch-badge step1">Step 1 • Compute (CaaS)</div>
+            <div class="arch-icon-box blue"><i class="fa-solid fa-server"></i></div>
+            <h3>Google Cloud Run</h3>
+            <p class="arch-role">Application & API Gateway</p>
+            <ul class="arch-points">
+                <li>Serverless Container as a Service (CaaS) running FastAPI.</li>
+                <li>Automatically scales from 0 to 1,000+ instances during campus emergency spikes.</li>
+                <li>Zero idle infrastructure cost ($0.00 scale-to-zero).</li>
+            </ul>
+        </div>
+
+        <div class="arch-card">
+            <div class="arch-badge step2">Step 2 • Object Storage</div>
+            <div class="arch-icon-box cyan"><i class="fa-solid fa-box-archive"></i></div>
+            <h3>Cloud Storage (GCS)</h3>
+            <p class="arch-role">Incident Evidence Ingestion</p>
+            <ul class="arch-points">
+                <li>Globally distributed blob/object storage bucket.</li>
+                <li>Stores high-resolution incident images uploaded by students.</li>
+                <li>Pre-signed secure URLs prevent unauthenticated media exposure.</li>
+            </ul>
+        </div>
+
+        <div class="arch-card">
+            <div class="arch-badge step3">Step 3 • Multimodal AI</div>
+            <div class="arch-icon-box purple"><i class="fa-solid fa-brain"></i></div>
+            <h3>Vertex AI / Gemini</h3>
+            <p class="arch-role">Hazard Triage & Vision Engine</p>
+            <ul class="arch-points">
+                <li>Multimodal visual inspection of damaged equipment and safety risks.</li>
+                <li>Extracts category, OSHA severity rating, and recommended repair procedure.</li>
+                <li>Replaces manual human triage with sub-second AI diagnostics.</li>
+            </ul>
+        </div>
+
+        <div class="arch-card">
+            <div class="arch-badge step4">Step 4 • OLTP Database</div>
+            <div class="arch-icon-box green"><i class="fa-solid fa-database"></i></div>
+            <h3>Cloud Firestore</h3>
+            <p class="arch-role">Operational Ticket Storage (OLTP)</p>
+            <ul class="arch-points">
+                <li>Serverless NoSQL document store for real-time ticket tracking.</li>
+                <li>Sub-millisecond writes for incident registration and dispatch updates.</li>
+                <li>ACID transactions ensure consistent Kanban board state transitions.</li>
+            </ul>
+        </div>
+
+        <div class="arch-card">
+            <div class="arch-badge step5">Step 5 • Data Warehouse</div>
+            <div class="arch-icon-box amber"><i class="fa-solid fa-cubes"></i></div>
+            <h3>Google BigQuery</h3>
+            <p class="arch-role">Analytical Engine (OLAP)</p>
+            <ul class="arch-points">
+                <li>Petabyte-scale serverless cloud data warehouse.</li>
+                <li>Computes campus breakdown heatmaps, Mean Time to Resolution (MTTR), and trends.</li>
+                <li>Separates heavy analytical SQL from operational ticket writes.</li>
+            </ul>
+        </div>
+
+        <div class="arch-card">
+            <div class="arch-badge step6">Step 6 • BI Visualization</div>
+            <div class="arch-icon-box red"><i class="fa-solid fa-chart-pie"></i></div>
+            <h3>Google Looker Studio</h3>
+            <p class="arch-role">Executive BI Reporting</p>
+            <ul class="arch-points">
+                <li>Direct SQL connector to BigQuery analytical fact tables.</li>
+                <li>Interactive scorecards, department pie charts, and breakdown heatmaps.</li>
+                <li>Shareable live reports for university leadership and facility heads.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Key Architectural Decisions Section -->
+    <section class="section-container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title"><i class="fa-solid fa-microchip"></i> Architectural Design Decisions & Technical FAQs</h2>
+                <p class="section-desc">Engineering rationale behind service selection, data pipeline design, and separation of concerns.</p>
+            </div>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-card">
+                <h4><i class="fa-solid fa-circle-question"></i> Why use Cloud Run over Google Compute Engine (VMs)?</h4>
+                <p>
+                    Compute Engine requires manual VM provisioning, OS security patching, and billing 24/7 even during idle night hours. 
+                    <strong>Cloud Run is serverless</strong>: it charges strictly per millisecond of compute used and scales to zero instances when no student incidents are being filed.
+                </p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fa-solid fa-circle-question"></i> Why separate Cloud Storage (GCS) from Cloud Firestore?</h4>
+                <p>
+                    Firestore is a NoSQL document database optimized for lightweight JSON metadata (max 1MB per document). Storing multi-megabyte binary images directly in Firestore would drastically degrade query latency and inflate costs. 
+                    <strong>Cloud Storage (GCS)</strong> is designed specifically for unstructured blob storage, while Firestore stores the metadata and image reference pointers.
+                </p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fa-solid fa-circle-question"></i> Why use Vertex AI / Gemini API instead of self-hosting a YOLO / ResNet model?</h4>
+                <p>
+                    Self-hosting computer vision models requires provisioning expensive GPU-enabled virtual machines (such as NVIDIA T4 or A100 instances) which cost hundreds of dollars monthly. 
+                    <strong>Google Vertex AI / Gemini</strong> provides Model as a Service (MaaS)—we pay strictly per token/request, eliminating all GPU cluster maintenance while gaining multi-modal reasoning.
+                </p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i class="fa-solid fa-circle-question"></i> Why separate Firestore (OLTP) from BigQuery (OLAP)?</h4>
+                <p>
+                    <strong>Firestore (OLTP)</strong> is engineered for high-concurrency, single-record lookups and updates as technicians change ticket states on the Kanban board. 
+                    Running complex analytical aggregations (e.g. Mean Time to Resolution across 50,000 incident events) on Firestore would exhaust read quotas. 
+                    <strong>BigQuery (OLAP)</strong> utilizes columnar storage and Massively Parallel Processing (MPP) to return complex analytical queries across millions of rows in seconds.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BigQuery Analytical SQL Queries -->
+    <section class="section-container">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title"><i class="fa-solid fa-code"></i> BigQuery Analytical SQL Queries</h2>
+                <p class="section-desc">The SQL logic powering the campus breakdown heatmaps, resolution velocity, and safety metrics.</p>
+            </div>
+        </div>
+
+        <div class="code-preview-card">
+            <div class="code-header">
+                <span>SQL Query 1: Mean Time to Resolution (MTTR) & Incident Velocity</span>
+                <button class="btn-copy" onclick="navigator.clipboard.writeText(document.getElementById('sql1').innerText); alert('Copied to clipboard!')">Copy</button>
+            </div>
+            <pre><code id="sql1">-- BigQuery MTTR & Velocity Analysis
+SELECT 
+    department,
+    COUNT(incident_id) AS total_incidents,
+    COUNTIF(severity = 'Critical') AS critical_hazards,
+    ROUND(AVG(TIMESTAMP_DIFF(resolved_at, created_at, MINUTE)) / 60.0, 2) AS avg_resolution_hours,
+    ROUND(COUNTIF(status = 'Resolved') * 100.0 / COUNT(incident_id), 1) AS resolution_rate_pct
+FROM 
+    `college-events-cc.campus_incidents_analytics.incident_events`
+GROUP BY 
+    department
+ORDER BY 
+    total_incidents DESC;</code></pre>
+        </div>
+
+        <div class="code-preview-card" style="margin-top: 1rem;">
+            <div class="code-header">
+                <span>SQL Query 2: Campus Building Incident Heatmap & Recurring Risk Analysis</span>
+                <button class="btn-copy" onclick="navigator.clipboard.writeText(document.getElementById('sql2').innerText); alert('Copied to clipboard!')">Copy</button>
+            </div>
+            <pre><code id="sql2">-- BigQuery Building Breakdown Heatmap
+SELECT 
+    building,
+    category,
+    COUNT(1) AS failure_frequency,
+    ARRAY_AGG(room ORDER BY created_at DESC LIMIT 3) AS frequent_failure_locations
+FROM 
+    `college-events-cc.campus_incidents_analytics.incident_events`
+GROUP BY 
+    building, category
+ORDER BY 
+    failure_frequency DESC;</code></pre>
+        </div>
+    </section>
+</div>
+{% endblock %}

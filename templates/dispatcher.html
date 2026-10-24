@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-container wide">
+    <!-- Header with Live Stats -->
+    <section class="dispatcher-header">
+        <div>
+            <span class="analytics-badge">
+                <i class="fa-solid fa-satellite-dish"></i> Cloud Firestore Live Dispatch Queue
+            </span>
+            <h1 class="page-title">Campus Maintenance Dispatcher Board</h1>
+            <p class="page-subtitle">Real-time incident triage and technician work order management powered by Google Cloud.</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn-action" onclick="fetchAndRenderKanban()">
+                <i class="fa-solid fa-arrows-rotate"></i> Refresh Queue
+            </button>
+            <a href="/analytics" class="btn-action secondary">
+                <i class="fa-solid fa-chart-pie"></i> View Executive Analytics
+            </a>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="kanban-filter-bar">
+        <div class="filter-group">
+            <label><i class="fa-solid fa-filter"></i> Category:</label>
+            <select id="filterCategory" onchange="filterKanbanCards()">
+                <option value="">All Categories</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Civil & Plumbing">Civil & Plumbing</option>
+                <option value="IT Infrastructure">IT Infrastructure</option>
+                <option value="Sanitation">Sanitation</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label><i class="fa-solid fa-fire"></i> Severity:</label>
+            <select id="filterSeverity" onchange="filterKanbanCards()">
+                <option value="">All Severities</option>
+                <option value="Critical">Critical</option>
+                <option value="High">High</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Low">Low</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label><i class="fa-solid fa-building"></i> Building:</label>
+            <select id="filterBuilding" onchange="filterKanbanCards()">
+                <option value="">All Buildings</option>
+                <option value="Dhruv">Dhruv</option>
+                <option value="Jamdagni">Jamdagni</option>
+                <option value="Maitreyi">Maitreyi</option>
+                <option value="Chanakya">Chanakya</option>
+                <option value="Vyasa">Vyasa</option>
+                <option value="Vivekananda">Vivekananda</option>
+                <option value="Ganga">Ganga</option>
+                <option value="Gargi">Gargi</option>
+                <option value="Vasisht">Vasisht</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="filter-group search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="kanbanSearch" placeholder="Search by ticket ID, room, or issue..." oninput="filterKanbanCards()">
+        </div>
+    </section>
+
+    <!-- Kanban Columns Grid -->
+    <section class="kanban-board">
+        <!-- Column 1: Reported -->
+        <div class="kanban-col">
+            <div class="col-header reported">
+                <div class="col-title-row">
+                    <span class="col-dot reported"></span>
+                    <h3>Reported (AI Triaged)</h3>
+                </div>
+                <span class="col-count" id="countReported">0</span>
+            </div>
+            <div class="col-cards-container" id="colReported">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <!-- Column 2: Dispatched -->
+        <div class="kanban-col">
+            <div class="col-header dispatched">
+                <div class="col-title-row">
+                    <span class="col-dot dispatched"></span>
+                    <h3>Dispatched</h3>
+                </div>
+                <span class="col-count" id="countDispatched">0</span>
+            </div>
+            <div class="col-cards-container" id="colDispatched">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <!-- Column 3: In Repair -->
+        <div class="kanban-col">
+            <div class="col-header inrepair">
+                <div class="col-title-row">
+                    <span class="col-dot inrepair"></span>
+                    <h3>In Active Repair</h3>
+                </div>
+                <span class="col-count" id="countInRepair">0</span>
+            </div>
+            <div class="col-cards-container" id="colInRepair">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <!-- Column 4: Resolved -->
+        <div class="kanban-col">
+            <div class="col-header resolved">
+                <div class="col-title-row">
+                    <span class="col-dot resolved"></span>
+                    <h3>Resolved</h3>
+                </div>
+                <span class="col-count" id="countResolved">0</span>
+            </div>
+            <div class="col-cards-container" id="colResolved">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetchAndRenderKanban();
+    });
+</script>
+{% endblock %}

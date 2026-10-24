@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-container">
+    <!-- Header with Quick Action Controls -->
+    <section class="dashboard-header">
+        <div>
+            <span class="analytics-badge">
+                <i class="fa-solid fa-chart-line"></i> Google BigQuery OLAP Analytics & Looker BI
+            </span>
+            <h1 class="page-title">Executive Campus Maintenance Analytics</h1>
+            <p class="page-subtitle">Real-time tracking of infrastructure breakdown velocity, safety hazard frequency, and Mean Time to Resolution (MTTR).</p>
+        </div>
+        <div class="header-actions">
+            <a href="/api/export/csv" class="btn-action">
+                <i class="fa-solid fa-file-csv"></i> Export BigQuery CSV
+            </a>
+            <a href="/architecture" class="btn-action secondary">
+                <i class="fa-solid fa-diagram-project"></i> View Data Pipeline
+            </a>
+        </div>
+    </section>
+
+    <!-- KPI Summary Row -->
+    <section class="metrics-grid-5">
+        <div class="metric-card">
+            <div class="metric-icon blue">
+                <i class="fa-solid fa-clipboard-check"></i>
+            </div>
+            <div class="metric-content">
+                <span class="metric-label">Total Incidents</span>
+                <h2 class="metric-value">{{ kpis.total_incidents }}</h2>
+                <span class="metric-trend"><i class="fa-solid fa-arrows-rotate"></i> Real-time Synced</span>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon red">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div class="metric-content">
+                <span class="metric-label">Critical Hazards</span>
+                <h2 class="metric-value">{{ kpis.critical_hazards }}</h2>
+                <span class="metric-trend danger"><i class="fa-solid fa-bolt"></i> OSHA Priority 1</span>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon amber">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <div class="metric-content">
+                <span class="metric-label">Active In-Repair</span>
+                <h2 class="metric-value">{{ kpis.in_progress_count }}</h2>
+                <span class="metric-trend">On-Site Technicians</span>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon green">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="metric-content">
+                <span class="metric-label">Resolution Rate</span>
+                <h2 class="metric-value">{{ kpis.resolution_rate_pct }}%</h2>
+                <span class="metric-trend success"><i class="fa-solid fa-arrow-up"></i> {{ kpis.resolved_count }} Closed</span>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon purple">
+                <i class="fa-solid fa-stopwatch"></i>
+            </div>
+            <div class="metric-content">
+                <span class="metric-label">Average MTTR</span>
+                <h2 class="metric-value">{{ kpis.average_mttr_hours }}h</h2>
+                <span class="metric-trend">Turnaround Time</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Row 1: Time Series & Department Breakdown -->
+    <section class="charts-grid">
+        <div class="chart-container">
+            <div class="chart-header">
+                <div>
+                    <h3 class="chart-title">Incident Velocity & Resolution Trends</h3>
+                    <p class="chart-desc">BigQuery Time-Series: Daily volume of reported vs resolved campus incidents</p>
+                </div>
+                <span class="chart-tag">BigQuery Window Aggregation</span>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="incidentTrendsChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-header">
+                <div>
+                    <h3 class="chart-title">Department Distribution</h3>
+                    <p class="chart-desc">Work order volume categorized by maintenance discipline</p>
+                </div>
+                <span class="chart-tag">Looker Studio Synced</span>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="deptDistributionChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Row 2: Building Breakdown & Severity Distribution -->
+    <section class="charts-grid">
+        <div class="chart-container">
+            <div class="chart-header">
+                <div>
+                    <h3 class="chart-title">Campus Building Incident Distribution</h3>
+                    <p class="chart-desc">Work orders generated across university complexes</p>
+                </div>
+                <span class="chart-tag">Infrastructure Heatmap</span>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="buildingChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-header">
+                <div>
+                    <h3 class="chart-title">Safety Hazard Severity Breakdown</h3>
+                    <p class="chart-desc">OSHA risk classifications assigned by Vertex AI</p>
+                </div>
+                <span class="chart-tag">AI Risk Scoring</span>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="severityChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Looker Studio Integration Preview Banner -->
+    <section class="looker-preview-card">
+        <div class="looker-left">
+            <div class="looker-logo">
+                <i class="fa-solid fa-chart-simple"></i>
+            </div>
+            <div>
+                <h3>Google Looker Studio & BigQuery Pipeline Active</h3>
+                <p>This dataset connects natively to BigQuery table <code>campus_incidents_analytics.incident_events</code>, allowing college leadership to view live BI dashboards across all MIT-WPU campus buildings.</p>
+            </div>
+        </div>
+        <div class="looker-right">
+            <a href="/architecture" class="btn-primary">
+                <i class="fa-solid fa-book-open"></i> View Architectural Pipeline
+            </a>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        initAnalyticsDashboard();
+    });
+</script>
+{% endblock %}

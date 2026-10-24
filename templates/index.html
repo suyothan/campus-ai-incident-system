@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-container">
+    <!-- Hero Banner -->
+    <section class="hero-section">
+        <div class="hero-badge">
+            <i class="fa-solid fa-atom"></i> Multimodal Computer Vision & Hazard Triage
+        </div>
+        <h1 class="hero-title">Smart Campus Incident & Hazard Diagnostic Portal</h1>
+        <p class="hero-subtitle">
+            Report damaged amenities, electrical hazards, or lab equipment failures. 
+            Google's <strong>Vertex AI & Gemini Vision</strong> inspects the photo, determines urgency, and dispatches on-call campus technicians in seconds.
+        </p>
+
+    </section>
+
+    <!-- Main Incident Form -->
+    <section class="report-form-container">
+        <div class="form-header-banner">
+            <div class="banner-icon"><i class="fa-solid fa-camera-retro"></i></div>
+            <div>
+                <h2>Submit Incident Photo & Details</h2>
+                <p>Upload a clear photo of the damaged amenity for automated AI triage.</p>
+            </div>
+        </div>
+
+        <form id="incidentForm" onsubmit="handleIncidentSubmit(event)" enctype="multipart/form-data">
+            <!-- Student Information Row -->
+            <div class="form-section-title">
+                <i class="fa-solid fa-user-graduate"></i> Reporter Information
+            </div>
+            <div class="form-grid-3">
+                <div class="form-group">
+                    <label for="studentName">Full Name *</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="studentName" name="student_name" required placeholder="e.g. Suyothan Vijayapandi">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rollNo">Student Roll Number *</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-hashtag"></i>
+                        <input type="text" id="rollNo" name="roll_no" required placeholder="e.g. 23EC105">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">College Email Address *</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="email" name="email" required placeholder="e.g. s.vijayapandi@mitwpu.edu.in">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 1rem;">
+                <label for="department">School / Department</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <select id="department" name="department">
+                        <option value="Electronics & Communication (ECE)" selected>Electronics & Communication Engineering (ECE)</option>
+                        <option value="Computer Science & Engineering (CSE)">Computer Science & Engineering (CSE)</option>
+                        <option value="Information Technology (IT)">Information Technology (IT)</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="General Science & Humanities">General Science & Humanities</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Incident Location & Details -->
+            <div class="form-section-title" style="margin-top: 1.5rem;">
+                <i class="fa-solid fa-location-dot"></i> Incident Location & Description
+            </div>
+            <div class="form-grid-2">
+                <div class="form-group">
+                    <label for="building">Campus Building / Complex *</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-building"></i>
+                        <select id="building" name="building" required onchange="handleBuildingChange(this.value)">
+                            <option value="Dhruv">Dhruv</option>
+                            <option value="Jamdagni">Jamdagni</option>
+                            <option value="Maitreyi">Maitreyi</option>
+                            <option value="Chanakya">Chanakya</option>
+                            <option value="Vyasa">Vyasa</option>
+                            <option value="Vivekananda">Vivekananda</option>
+                            <option value="Ganga">Ganga</option>
+                            <option value="Gargi">Gargi</option>
+                            <option value="Vasisht">Vasisht</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="room">Room / Lab / Floor Area *</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-door-open"></i>
+                        <input type="text" id="room" name="room" required placeholder="e.g. VLSI Lab 204 or 3rd Floor Corridor">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Custom Location Input when 'Other' is chosen -->
+            <div class="form-group" id="otherBuildingContainer" style="display: none; margin-top: 1rem; margin-bottom: 1rem; padding: 1.2rem; background: rgba(59, 130, 246, 0.08); border: 1px dashed rgba(59, 130, 246, 0.5); border-radius: 10px;">
+                <label for="otherBuilding" style="font-weight: 600; color: #93c5fd; margin-bottom: 0.5rem; display: block; font-size: 0.95rem;">
+                    <i class="fa-solid fa-map-location-dot"></i> Specify Custom Campus Location / Building Name *
+                </label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <input type="text" id="otherBuilding" name="other_building" placeholder="Type location name (e.g. Ground / Central Sports Complex / Canteen / Parking)...">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Incident Title *</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-heading"></i>
+                    <input type="text" id="title" name="title" required placeholder="e.g. Loose electrical conduit with sparks under workstation">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Detailed Description of Hazard / Fault *</label>
+                <div class="input-wrapper">
+                    <textarea id="description" name="description" rows="3" required placeholder="Describe what is broken, what symptoms are observed, and any safety hazards..."></textarea>
+                </div>
+            </div>
+
+            <!-- Photo Upload Area -->
+            <div class="form-section-title" style="margin-top: 1.5rem;">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Photo Evidence (Google Cloud Storage Ingestion)
+            </div>
+            <div class="upload-dropzone" id="uploadZone" onclick="document.getElementById('incidentImage').click()">
+                <input type="file" id="incidentImage" name="image" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+                <div id="dropzoneContent">
+                    <div class="upload-icon-circle">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <h4>Click to Upload or Drag & Drop Incident Photo</h4>
+                    <p>Supported: JPG, PNG, WEBP (Ingested into Cloud Storage bucket)</p>
+                </div>
+                <div id="imagePreviewContainer" style="display: none;">
+                    <img id="imagePreview" src="" alt="Incident Preview">
+                    <div class="preview-badge" id="previewFilename">image.jpg</div>
+                </div>
+            </div>
+
+            <!-- Submit Action -->
+            <div class="form-actions">
+                <button type="submit" class="btn-primary-large" id="btnSubmitIncident">
+                    <span id="btnText">
+                        <i class="fa-solid fa-brain"></i> Run Multimodal AI Triage & Dispatch
+                    </span>
+                </button>
+            </div>
+        </form>
+    </section>
+</div>
+
+<!-- Modal: AI Diagnostic Results & Work Order -->
+<div class="modal-overlay" id="diagnosticModal">
+    <div class="modal-container-large">
+        <button class="modal-close" onclick="closeDiagnosticModal()">&times;</button>
+        
+        <div class="modal-ai-header">
+            <div class="ai-pulse-icon">
+                <i class="fa-solid fa-shield-virus"></i>
+            </div>
+            <div>
+                <span class="ai-status-tag">GEMINI MULTIMODAL VISION ASSESSMENT</span>
+                <h2 id="mTicketTitle">Incident Diagnosed & Work Order Created</h2>
+                <p id="mTicketMeta">Ticket ID: INC-0000 • Saraswati Complex</p>
+            </div>
+        </div>
+
+        <div class="diagnostic-grid">
+            <!-- Left Column: Diagnostic Cards -->
+            <div class="diag-left">
+                <div class="diag-card highlight">
+                    <div class="diag-metric-row">
+                        <div>
+                            <span class="diag-sub">DETECTED CATEGORY</span>
+                            <h3 id="mCategory" class="diag-val">Electrical</h3>
+                        </div>
+                        <div class="severity-pill-large" id="mSeverityPill">
+                            <i class="fa-solid fa-circle-exclamation"></i> <span id="mSeverity">Critical</span>
+                        </div>
+                    </div>
+                    <div class="hazard-alert-box" id="mHazardBox">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span id="mHazardType">High-Voltage Shock & Fire Hazard</span>
+                    </div>
+                </div>
+
+                <div class="diag-card">
+                    <span class="diag-sub">AUTOMATED TECHNICAL DIAGNOSIS</span>
+                    <p id="mDiagnosis" class="diag-text">Inspection confirms physical wire degradation and short-circuit risk.</p>
+                </div>
+
+                <div class="diag-card">
+                    <span class="diag-sub">RECOMMENDED PROTOCOL & ACTION</span>
+                    <p id="mRecommendedAction" class="diag-text">Isolate breaker at main panel and deploy certified electrician.</p>
+                </div>
+            </div>
+
+            <!-- Right Column: Dispatch & Work Order Pass -->
+            <div class="diag-right">
+                <div class="ticket-pass-box">
+                    <div class="pass-header">
+                        <span class="pass-tag">OFFICIAL WORK ORDER</span>
+                        <span class="pass-qr"><i class="fa-solid fa-qrcode"></i></span>
+                    </div>
+                    
+                    <div class="pass-field">
+                        <span class="p-lbl">ASSIGNED TECHNICIAN</span>
+                        <strong id="mTechnician" class="p-val">Licensed High-Voltage Electrician</strong>
+                    </div>
+
+                    <div class="pass-field">
+                        <span class="p-lbl">ESTIMATED REPAIR TIME</span>
+                        <strong id="mRepairTime" class="p-val">2.0 Hours</strong>
+                    </div>
+
+                    <div class="pass-field">
+                        <span class="p-lbl">AI CONFIDENCE SCORE</span>
+                        <div class="confidence-bar-bg">
+                            <div class="confidence-bar-fill" id="mConfidenceBar" style="width: 98%;"></div>
+                        </div>
+                        <small id="mConfidenceText" style="color: #60a5fa; font-weight: 700;">98% Confidence</small>
+                    </div>
+
+                    <div class="pass-field">
+                        <span class="p-lbl">FIRESTORE TRANSACTION ID</span>
+                        <code id="mTicketId">INC-8041</code>
+                    </div>
+
+                    <div class="pass-footer">
+                        <span class="status-stamp live">STATUS: DISPATCHED</span>
+                    </div>
+                </div>
+
+                <div class="modal-buttons-row">
+                    <a href="/dispatcher" class="btn-action-primary">
+                        <i class="fa-solid fa-clipboard-list"></i> View on Dispatcher Board
+                    </a>
+                    <button type="button" class="btn-action-secondary" onclick="window.print()">
+                        <i class="fa-solid fa-print"></i> Print Work Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    function handleBuildingChange(val) {
+        var box = document.getElementById("otherBuildingContainer");
+        var input = document.getElementById("otherBuilding");
+        if (!box) return;
+        if (val === "Other") {
+            box.style.display = "block";
+            if (input) {
+                input.required = true;
+                setTimeout(function() {
+                    input.focus();
+                }, 100);
+            }
+        } else {
+            box.style.display = "none";
+            if (input) {
+                input.required = false;
+                input.value = "";
+            }
+        }
+    }
+
+    // Attach listeners on load
+    document.addEventListener("DOMContentLoaded", function() {
+        var sel = document.getElementById("building");
+        if (sel) {
+            sel.addEventListener("change", function() {
+                handleBuildingChange(this.value);
+            });
+            if (sel.value === "Other") {
+                handleBuildingChange("Other");
+            }
+        }
+    });
+</script>
+{% endblock %}
