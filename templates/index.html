@@ -131,39 +131,40 @@
                 <i class="fa-solid fa-camera"></i> Photo Evidence (Google Cloud Storage Ingestion)
             </div>
 
+            <!-- Native File Inputs with accessible visual hiding (Bypasses mobile popup/synthetic click blocking) -->
+            <input type="file" id="cameraInput" accept="image/*" capture="environment" class="visually-hidden-file-input" onchange="handleFileSelect(event)">
+            <input type="file" id="incidentImage" name="image" accept="image/*" class="visually-hidden-file-input" onchange="handleFileSelect(event)">
+
             <!-- Mobile-First Direct Camera & Gallery Action Row -->
             <div class="photo-action-buttons">
-                <button type="button" class="btn-photo-action camera-btn" id="btnCaptureCamera" onclick="triggerCameraCapture(event)">
+                <!-- Native Label for Camera -->
+                <label for="cameraInput" class="btn-photo-action camera-btn" id="lblCaptureCamera">
                     <div class="btn-photo-icon"><i class="fa-solid fa-camera"></i></div>
                     <div class="btn-photo-text">
                         <strong>Take Live Photo</strong>
                         <small>Open Mobile Camera</small>
                     </div>
-                </button>
-                <button type="button" class="btn-photo-action gallery-btn" id="btnChooseGallery" onclick="triggerGalleryUpload(event)">
+                </label>
+                <!-- Native Label for Gallery -->
+                <label for="incidentImage" class="btn-photo-action gallery-btn" id="lblChooseGallery">
                     <div class="btn-photo-icon"><i class="fa-solid fa-images"></i></div>
                     <div class="btn-photo-text">
                         <strong>Upload from Files</strong>
                         <small>Choose from Gallery</small>
                     </div>
-                </button>
+                </label>
             </div>
 
-            <div class="upload-dropzone" id="uploadZone" onclick="triggerGalleryUpload(event)">
-                <!-- Native Camera Input (capture="environment" directly invokes rear camera on mobile phones) -->
-                <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;" onchange="handleFileSelect(event)">
-                <!-- Standard File Input (opens file picker / gallery) -->
-                <input type="file" id="incidentImage" name="image" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
-                
+            <label for="incidentImage" class="upload-dropzone" id="uploadZone">
                 <div id="dropzoneContent">
                     <div class="upload-icon-circle">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                     </div>
-                    <h4>Tap "Take Live Photo", "Upload from Files", or Drag Image</h4>
+                    <h4>Tap "Take Live Photo", "Upload from Files", or Drop Image</h4>
                     <p>Supported: JPG, PNG, WEBP (Ingested into Cloud Storage bucket)</p>
                 </div>
                 
-                <div id="imagePreviewContainer" style="display: none;" onclick="event.stopPropagation()">
+                <div id="imagePreviewContainer" style="display: none;" onclick="event.preventDefault(); event.stopPropagation();">
                     <img id="imagePreview" src="" alt="Incident Preview">
                     <div class="preview-footer-bar">
                         <div class="preview-badge" id="previewFilename">
@@ -174,7 +175,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </label>
 
             <!-- Submit Action -->
             <div class="form-actions">
