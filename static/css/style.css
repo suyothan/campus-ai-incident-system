@@ -1878,3 +1878,312 @@ body {
         gap: 1.25rem;
     }
 }
+
+/* ==========================================================================
+   Admin Staff PIN Authentication Gate
+   ========================================================================== */
+.admin-auth-card {
+    max-width: 520px;
+    margin: 3rem auto;
+    background: var(--surface-card);
+    border: 1px solid var(--hairline-strong);
+    border-radius: 20px;
+    padding: 2.75rem 2.25rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.auth-lock-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--rounded-pill);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.1));
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 1.25rem;
+}
+
+.auth-badge {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    padding: 3px 10px;
+    border-radius: var(--rounded-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+}
+
+.admin-auth-card h2 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: var(--ink-strong);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.admin-auth-card p {
+    font-size: 0.92rem;
+    color: var(--body);
+    line-height: 1.5;
+    margin-bottom: 1.75rem;
+}
+
+.admin-pin-form {
+    text-align: left;
+}
+
+.pin-input-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--body);
+    margin-bottom: 0.5rem;
+}
+
+.auth-error-banner {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 10px;
+    color: #ef4444;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.auth-helper-note {
+    margin-top: 1.25rem;
+    font-size: 0.8rem;
+    color: var(--body-muted);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.auth-helper-note code {
+    background: var(--surface-strong);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    color: var(--ink-strong);
+}
+
+.btn-action.logout {
+    background: transparent;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.btn-action.logout:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* ==========================================================================
+   Student Incident Status Tracker
+   ========================================================================== */
+.tracker-card {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline-strong);
+    border-radius: 18px;
+    padding: 1.75rem 1.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.tracker-badge {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    padding: 3px 10px;
+    border-radius: var(--rounded-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.6rem;
+}
+
+.tracker-header h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--ink-strong);
+    margin-bottom: 0.35rem;
+}
+
+.tracker-header p {
+    font-size: 0.9rem;
+    color: var(--body);
+    margin-bottom: 1.25rem;
+}
+
+.tracker-input-row {
+    display: flex;
+    gap: 0.75rem;
+}
+
+@media (max-width: 600px) {
+    .tracker-input-row {
+        flex-direction: column;
+    }
+}
+
+.btn-tracker-submit {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    border: none;
+    padding: 0 1.5rem;
+    min-height: 46px;
+    border-radius: var(--rounded-pill);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+.btn-tracker-submit:hover {
+    background: var(--btn-primary-hover-bg);
+}
+
+.tracker-results-container {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--hairline);
+}
+
+.tracker-empty {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    color: var(--body-muted);
+}
+
+.tracker-empty i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+}
+
+.tracker-results-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+.tracker-result-card {
+    background: var(--surface-strong);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 1.5rem;
+}
+
+.tr-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.65rem;
+}
+
+.tr-id {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--ink-strong);
+}
+
+.tr-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--ink-strong);
+    margin-bottom: 0.25rem;
+}
+
+.tr-meta {
+    font-size: 0.82rem;
+    color: var(--body-muted);
+    margin-bottom: 1.25rem;
+}
+
+.tr-progress-bar {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 1.5rem 0;
+}
+
+.tr-progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 20px;
+    right: 20px;
+    height: 3px;
+    background: var(--hairline-strong);
+    z-index: 1;
+}
+
+.tr-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    font-size: 0.74rem;
+    color: var(--body-muted);
+    gap: 0.35rem;
+}
+
+.tr-step .step-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: var(--rounded-pill);
+    background: var(--surface-card);
+    border: 2px solid var(--hairline-strong);
+}
+
+.tr-step.active {
+    color: var(--ink-strong);
+    font-weight: 600;
+}
+
+.tr-step.active .step-dot {
+    background: #10b981;
+    border-color: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+}
+
+.tr-details-box {
+    background: var(--surface-card);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.tr-hazard-warn {
+    color: #ef4444;
+    font-weight: 500;
+}

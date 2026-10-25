@@ -15,6 +15,29 @@
 
     </section>
 
+    <!-- Quick Student Status Tracker -->
+    <section class="tracker-card">
+        <div class="tracker-header">
+            <div class="tracker-badge"><i class="fa-solid fa-satellite-dish"></i> Live Student Complaint Tracking</div>
+            <h3>Check Your Incident & Repair Status</h3>
+            <p>Enter your Ticket ID (e.g. <code>INC-49525</code>) or Roll No (e.g. <code>23EC105</code>) to see live technician assignments and progress.</p>
+        </div>
+        <form onsubmit="trackStudentIncident(event)" class="tracker-search-form">
+            <div class="tracker-input-row">
+                <div class="input-wrapper" style="flex: 1;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="trackerInput" placeholder="Type Ticket ID (e.g. INC-49525) or Roll Number..." required>
+                </div>
+                <button type="submit" class="btn-tracker-submit" id="btnTrackStatus">
+                    <i class="fa-solid fa-search"></i> Check Status
+                </button>
+            </div>
+        </form>
+        <div id="trackerResultsContainer" class="tracker-results-container" style="display: none;">
+            <!-- Dynamically populated via JS -->
+        </div>
+    </section>
+
     <!-- Main Incident Form -->
     <section class="report-form-container">
         <div class="form-header-banner">

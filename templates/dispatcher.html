@@ -2,24 +2,58 @@
 
 {% block content %}
 <div class="page-container wide">
-    <!-- Header with Live Stats -->
-    <section class="dispatcher-header">
-        <div>
-            <span class="analytics-badge">
-                <i class="fa-solid fa-satellite-dish"></i> Cloud Firestore Live Dispatch Queue
-            </span>
-            <h1 class="page-title">Campus Maintenance Dispatcher Board</h1>
-            <p class="page-subtitle">Real-time incident triage and technician work order management powered by Google Cloud.</p>
+    <!-- Facility Staff PIN Authentication Card (Shown when not authenticated) -->
+    <div id="dispatcherLoginCard" class="admin-auth-card" style="display: none;">
+        <div class="auth-lock-icon">
+            <i class="fa-solid fa-shield-halved"></i>
         </div>
-        <div class="header-actions">
-            <button class="btn-action" onclick="fetchAndRenderKanban()">
-                <i class="fa-solid fa-arrows-rotate"></i> Refresh Queue
+        <span class="auth-badge"><i class="fa-solid fa-lock"></i> Restricted Staff Access</span>
+        <h2>Estate & Facility Maintenance Portal</h2>
+        <p>The Maintenance Dispatcher board is restricted to authorized MIT-WPU facility supervisors and technicians to update work orders.</p>
+        
+        <form onsubmit="handleAdminLogin(event)" class="admin-pin-form">
+            <div class="pin-input-group">
+                <label for="adminPinInput">Staff Authorization PIN</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="password" id="adminPinInput" placeholder="Enter PIN (e.g. admin123)..." autocomplete="current-password" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-primary-large" id="btnAdminLogin">
+                <i class="fa-solid fa-unlock-keyhole"></i> Unlock Maintenance Board
             </button>
-            <a href="/analytics" class="btn-action secondary">
-                <i class="fa-solid fa-chart-pie"></i> View Executive Analytics
-            </a>
-        </div>
-    </section>
+            <div id="authErrorMsg" class="auth-error-banner" style="display: none;">
+                <i class="fa-solid fa-circle-exclamation"></i> Incorrect PIN. Please try again.
+            </div>
+            <div class="auth-helper-note">
+                <i class="fa-solid fa-circle-info"></i> Default Facility PIN: <code>admin123</code>
+            </div>
+        </form>
+    </div>
+
+    <!-- Authenticated Staff Dispatcher Board (Shown after entering PIN) -->
+    <div id="dispatcherAuthenticatedSection" style="display: none;">
+        <!-- Header with Live Stats -->
+        <section class="dispatcher-header">
+            <div>
+                <span class="analytics-badge">
+                    <i class="fa-solid fa-shield-check" style="color: #10b981;"></i> Facility Staff Mode Active
+                </span>
+                <h1 class="page-title">Campus Maintenance Dispatcher Board</h1>
+                <p class="page-subtitle">Real-time incident triage and technician work order management powered by Google Cloud.</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-action" onclick="fetchAndRenderKanban()">
+                    <i class="fa-solid fa-arrows-rotate"></i> Refresh Queue
+                </button>
+                <a href="/analytics" class="btn-action secondary">
+                    <i class="fa-solid fa-chart-pie"></i> Executive Analytics
+                </a>
+                <button class="btn-action logout" onclick="handleAdminLogout()" title="Lock board and sign out">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+                </button>
+            </div>
+        </section>
 
     <!-- Filter Bar -->
     <section class="kanban-filter-bar">
@@ -123,16 +157,16 @@
             </div>
             <div class="col-cards-container" id="colResolved">
                 <!-- Injected via JS -->
-            </div>
         </div>
     </section>
+    </div> <!-- end #dispatcherAuthenticatedSection -->
 </div>
 {% endblock %}
 
 {% block extra_scripts %}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        fetchAndRenderKanban();
+        checkDispatcherAuth();
     });
 </script>
 {% endblock %}

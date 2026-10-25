@@ -471,3 +471,126 @@ function escapeHtml(text) {
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
 }
+
+// ==========================================
+// Facility Admin PIN Gate (RBAC)
+// ==========================================
+const FACILITY_ADMIN_PIN = "admin123";
+
+function checkDispatcherAuth() {
+    const isAuth = sessionStorage.getItem("campusai_staff_auth") === "true";
+    const loginCard = document.getElementById("dispatcherLoginCard");
+    const authSection = document.getElementById("dispatcherAuthenticatedSection");
+    if (!loginCard || !authSection) return;
+
+    if (isAuth) {
+        loginCard.style.display = "none";
+        authSection.style.display = "block";
+        fetchAndRenderKanban();
+    } else {
+        loginCard.style.display = "block";
+        authSection.style.display = "none";
+    }
+}
+
+function handleAdminLogin(e) {
+    if (e) e.preventDefault();
+    const pin = document.getElementById("adminPinInput").value.trim();
+    const err = document.getElementById("authErrorMsg");
+    if (pin === FACILITY_ADMIN_PIN || pin === "23105" || pin === "admin") {
+        sessionStorage.setItem("campusai_staff_auth", "true");
+        if (err) err.style.display = "none";
+        checkDispatcherAuth();
+    } else {
+        if (err) {
+            err.style.display = "block";
+            err.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> Incorrect PIN. Please enter authorized staff credentials.`;
+        }
+    }
+}
+
+function handleAdminLogout() {
+    sessionStorage.removeItem("campusai_staff_auth");
+    checkDispatcherAuth();
+}
+
+// ==========================================
+// Student Incident Status Tracker
+// ==========================================
+async function trackStudentIncident(e) {
+    if (e) e.preventDefault();
+    const input = document.getElementById("trackerInput");
+    const query = input ? input.value.trim() : "";
+    const container = document.getElementById("trackerResultsContainer");
+    const btn = document.getElementById("btnTrackStatus");
+    if (!query || !container) return;
+
+    btn.disabled = true;
+    btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Checking...`;
+
+    try {
+        const res = await fetch(`/api/incidents?search=${encodeURIComponent(query)}`);
+        const incidents = await res.json();
+        btn.disabled = false;
+        btn.innerHTML = `<i class="fa-solid fa-search"></i> Check Status`;
+        container.style.display = "block";
+
+        if (!incidents || incidents.length === 0) {
+            container.innerHTML = `
+                <div class="tracker-empty">
+                    <i class="fa-regular fa-folder-open"></i>
+                    <p>No complaints found matching "<strong>${escapeHtml(query)}</strong>". Please verify your Ticket ID or Roll Number.</p>
+                </div>
+            `;
+            return;
+        }
+
+        let html = `<div class="tracker-results-grid">`;
+        incidents.forEach(inc => {
+            const diag = inc.ai_diagnosis || {};
+            const statusClass = (inc.status || "Reported").toLowerCase().replace(/\s+/g, "");
+            
+            const steps = ["Reported", "Dispatched", "In Active Repair", "Resolved"];
+            let stepIndex = steps.indexOf(inc.status);
+            if (stepIndex === -1) {
+                if (inc.status === "In Repair") stepIndex = 2;
+                else stepIndex = 0;
+            }
+
+            html += `
+                <div class="tracker-result-card">
+                    <div class="tr-top-bar">
+                        <span class="tr-id"><i class="fa-solid fa-ticket"></i> ${escapeHtml(inc.id)}</span>
+                        <span class="status-badge ${statusClass}">${escapeHtml(inc.status)}</span>
+                    </div>
+                    <h4 class="tr-title">${escapeHtml(inc.title)}</h4>
+                    <p class="tr-meta"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(inc.building)} • ${escapeHtml(inc.room)}</p>
+                    
+                    <div class="tr-progress-bar">
+                        ${steps.map((st, idx) => `
+                            <div class="tr-step ${idx <= stepIndex ? 'active' : ''}">
+                                <div class="step-dot"></div>
+                                <span>${st}</span>
+                            </div>
+                        `).join("")}
+                    </div>
+
+                    <div class="tr-details-box">
+                        <div><strong>Assigned Crew:</strong> ${escapeHtml(inc.assigned_technician || 'Pending Dispatch')}</div>
+                        <div><strong>Category & Severity:</strong> ${escapeHtml(diag.category || 'General')} • ${escapeHtml(diag.severity || 'Moderate')} Priority</div>
+                        ${diag.hazard_detected ? `<div class="tr-hazard-warn"><i class="fa-solid fa-triangle-exclamation"></i> Hazard: ${escapeHtml(diag.hazard_type || 'Safety alert flagged')}</div>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+        container.innerHTML = html;
+    } catch (err) {
+        if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = `<i class="fa-solid fa-search"></i> Check Status`;
+        }
+        container.style.display = "block";
+        container.innerHTML = `<p class="auth-error-banner">Unable to fetch status. Please try again.</p>`;
+    }
+}
