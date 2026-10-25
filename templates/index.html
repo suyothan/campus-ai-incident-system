@@ -128,20 +128,51 @@
 
             <!-- Photo Upload Area -->
             <div class="form-section-title" style="margin-top: 1.5rem;">
-                <i class="fa-solid fa-cloud-arrow-up"></i> Photo Evidence (Google Cloud Storage Ingestion)
+                <i class="fa-solid fa-camera"></i> Photo Evidence (Google Cloud Storage Ingestion)
             </div>
-            <div class="upload-dropzone" id="uploadZone" onclick="document.getElementById('incidentImage').click()">
+
+            <!-- Mobile-First Direct Camera & Gallery Action Row -->
+            <div class="photo-action-buttons">
+                <button type="button" class="btn-photo-action camera-btn" id="btnCaptureCamera" onclick="triggerCameraCapture(event)">
+                    <div class="btn-photo-icon"><i class="fa-solid fa-camera"></i></div>
+                    <div class="btn-photo-text">
+                        <strong>Take Live Photo</strong>
+                        <small>Open Mobile Camera</small>
+                    </div>
+                </button>
+                <button type="button" class="btn-photo-action gallery-btn" id="btnChooseGallery" onclick="triggerGalleryUpload(event)">
+                    <div class="btn-photo-icon"><i class="fa-solid fa-images"></i></div>
+                    <div class="btn-photo-text">
+                        <strong>Upload from Files</strong>
+                        <small>Choose from Gallery</small>
+                    </div>
+                </button>
+            </div>
+
+            <div class="upload-dropzone" id="uploadZone" onclick="triggerGalleryUpload(event)">
+                <!-- Native Camera Input (capture="environment" directly invokes rear camera on mobile phones) -->
+                <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;" onchange="handleFileSelect(event)">
+                <!-- Standard File Input (opens file picker / gallery) -->
                 <input type="file" id="incidentImage" name="image" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+                
                 <div id="dropzoneContent">
                     <div class="upload-icon-circle">
-                        <i class="fa-solid fa-camera"></i>
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
                     </div>
-                    <h4>Click to Upload or Drag & Drop Incident Photo</h4>
+                    <h4>Tap "Take Live Photo", "Upload from Files", or Drag Image</h4>
                     <p>Supported: JPG, PNG, WEBP (Ingested into Cloud Storage bucket)</p>
                 </div>
-                <div id="imagePreviewContainer" style="display: none;">
+                
+                <div id="imagePreviewContainer" style="display: none;" onclick="event.stopPropagation()">
                     <img id="imagePreview" src="" alt="Incident Preview">
-                    <div class="preview-badge" id="previewFilename">image.jpg</div>
+                    <div class="preview-footer-bar">
+                        <div class="preview-badge" id="previewFilename">
+                            <i class="fa-solid fa-circle-check" style="color: #10b981;"></i> <span>image.jpg</span>
+                        </div>
+                        <button type="button" class="btn-retake-action" onclick="retakePhoto(event)">
+                            <i class="fa-solid fa-arrows-rotate"></i> Retake / Change
+                        </button>
+                    </div>
                 </div>
             </div>
 

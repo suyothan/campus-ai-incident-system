@@ -7,17 +7,67 @@
 // Incident Image Upload & Preview Handler
 // ==========================================
 
+let currentSelectedFile = null;
+
+function triggerCameraCapture(e) {
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    const cam = document.getElementById("cameraInput");
+    if (cam) cam.click();
+}
+
+function triggerGalleryUpload(e) {
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    const gal = document.getElementById("incidentImage");
+    if (gal) gal.click();
+}
+
+function retakePhoto(e) {
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    currentSelectedFile = null;
+    const cam = document.getElementById("cameraInput");
+    const gal = document.getElementById("incidentImage");
+    if (cam) cam.value = "";
+    if (gal) gal.value = "";
+    
+    const previewContainer = document.getElementById("imagePreviewContainer");
+    const dropzoneContent = document.getElementById("dropzoneContent");
+    if (previewContainer) previewContainer.style.display = "none";
+    if (dropzoneContent) dropzoneContent.style.display = "block";
+    const previewImg = document.getElementById("imagePreview");
+    if (previewImg) previewImg.src = "";
+}
+
 function handleFileSelect(event) {
-    const file = event.target.files[0];
+    const file = event.target.files && event.target.files[0];
     if (!file) return;
+
+    currentSelectedFile = file;
 
     const reader = new FileReader();
     reader.onload = function(e) {
-        document.getElementById("dropzoneContent").style.display = "none";
+        const dropzoneContent = document.getElementById("dropzoneContent");
+        if (dropzoneContent) dropzoneContent.style.display = "none";
+        
         const previewContainer = document.getElementById("imagePreviewContainer");
-        previewContainer.style.display = "block";
-        document.getElementById("imagePreview").src = e.target.result;
-        document.getElementById("previewFilename").textContent = file.name;
+        if (previewContainer) previewContainer.style.display = "block";
+        
+        const previewImg = document.getElementById("imagePreview");
+        if (previewImg) previewImg.src = e.target.result;
+        
+        const previewFilename = document.getElementById("previewFilename");
+        if (previewFilename) {
+            const sizeMb = (file.size / (1024 * 1024)).toFixed(2);
+            previewFilename.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #10b981;"></i> <span>${file.name || 'camera_photo.jpg'} (${sizeMb} MB)</span>`;
+        }
     };
     reader.readAsDataURL(file);
 }
@@ -56,6 +106,11 @@ async function handleIncidentSubmit(e) {
 
     const form = document.getElementById("incidentForm");
     const formData = new FormData(form);
+
+    // Attach captured camera file or gallery file
+    if (currentSelectedFile) {
+        formData.set("image", currentSelectedFile, currentSelectedFile.name || "incident_capture.jpg");
+    }
 
     try {
         const response = await fetch("/api/incidents/report", {
