@@ -1,1 +1,992 @@
-[]
+[
+  {
+    "id": "INC-6101",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Computer Science",
+    "building": "Maitreyi",
+    "room": "IoT Innovation Center",
+    "title": "Loose terminal block with active sparking on 3-phase supply",
+    "description": "Observed in Maitreyi (IoT Innovation Center). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-20T06:17:54.518646",
+    "assigned_technician": "Senior Electrician",
+    "ai_diagnosis": {
+      "category": "Electrical",
+      "severity": "Critical",
+      "hazard_detected": true,
+      "hazard_type": "Short Circuit Hazard",
+      "required_technician": "Senior Electrician",
+      "confidence_score": 97,
+      "recommended_actions": [
+        "Isolate power or service to IoT Innovation Center",
+        "Dispatch Senior Electrician with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6102",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Information Technology",
+    "building": "Chanakya",
+    "room": "VLSI Lab 301",
+    "title": "High-voltage oscilloscope power supply failure during VLSI lab",
+    "description": "Observed in Chanakya (VLSI Lab 301). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Resolved",
+    "timestamp": "2026-08-19T14:17:54.518646",
+    "assigned_technician": "R. Sharma (Electrician)",
+    "ai_diagnosis": {
+      "category": "Electrical",
+      "severity": "High",
+      "hazard_detected": true,
+      "hazard_type": "Electrical Component Breakdown",
+      "required_technician": "R. Sharma (Electrician)",
+      "confidence_score": 93,
+      "recommended_actions": [
+        "Isolate power or service to VLSI Lab 301",
+        "Dispatch R. Sharma (Electrician) with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    },
+    "resolved_at": "2026-08-19T22:17:54.518646"
+  },
+  {
+    "id": "INC-6103",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Mechanical Engineering",
+    "building": "Vyasa",
+    "room": "Embedded Systems Lab",
+    "title": "Exposed wire conduit beneath seminar hall podium",
+    "description": "Observed in Vyasa (Embedded Systems Lab). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Dispatched",
+    "timestamp": "2026-08-18T13:17:54.518646",
+    "assigned_technician": "Senior Electrician",
+    "ai_diagnosis": {
+      "category": "Electrical",
+      "severity": "Critical",
+      "hazard_detected": true,
+      "hazard_type": "Exposed Live Wire",
+      "required_technician": "Senior Electrician",
+      "confidence_score": 89,
+      "recommended_actions": [
+        "Isolate power or service to Embedded Systems Lab",
+        "Dispatch Senior Electrician with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6104",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Civil Engineering",
+    "building": "Vivekananda",
+    "room": "DSP Lab 204",
+    "title": "Overheated step-down transformer hum in power electronics lab",
+    "description": "Observed in Vivekananda (DSP Lab 204). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Resolved",
+    "timestamp": "2026-08-18T04:17:54.518646",
+    "assigned_technician": "Electrical Maintenance",
+    "ai_diagnosis": {
+      "category": "Electrical",
+      "severity": "High",
+      "hazard_detected": true,
+      "hazard_type": "Thermal & Fire Risk",
+      "required_technician": "Electrical Maintenance",
+      "confidence_score": 97,
+      "recommended_actions": [
+        "Isolate power or service to DSP Lab 204",
+        "Dispatch Electrical Maintenance with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    },
+    "resolved_at": "2026-08-18T21:17:54.518646"
+  },
+  {
+    "id": "INC-6105",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Electronics & Communication",
+    "building": "Ganga",
+    "room": "Robotics Bay A",
+    "title": "Ceiling HVAC duct leaking condensation near main server rack",
+    "description": "Observed in Ganga (Robotics Bay A). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-17T10:17:54.518646",
+    "assigned_technician": "A. More (HVAC Specialist)",
+    "ai_diagnosis": {
+      "category": "HVAC / Cooling",
+      "severity": "High",
+      "hazard_detected": true,
+      "hazard_type": "Water Damage Hazard",
+      "required_technician": "A. More (HVAC Specialist)",
+      "confidence_score": 97,
+      "recommended_actions": [
+        "Isolate power or service to Robotics Bay A",
+        "Dispatch A. More (HVAC Specialist) with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6106",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Computer Science",
+    "building": "Gargi",
+    "room": "Workshop C-1",
+    "title": "Classroom split AC compressor making continuous screeching noise",
+    "description": "Observed in Gargi (Workshop C-1). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Resolved",
+    "timestamp": "2026-08-16T21:17:54.518646",
+    "assigned_technician": "HVAC Team",
+    "ai_diagnosis": {
+      "category": "HVAC / Cooling",
+      "severity": "Moderate",
+      "hazard_detected": false,
+      "hazard_type": "None",
+      "required_technician": "HVAC Team",
+      "confidence_score": 93,
+      "recommended_actions": [
+        "Isolate power or service to Workshop C-1",
+        "Dispatch HVAC Team with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    },
+    "resolved_at": "2026-08-17T01:17:54.518646"
+  },
+  {
+    "id": "INC-6107",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Information Technology",
+    "building": "Vasisht",
+    "room": "Fluid Mechanics Lab",
+    "title": "Chilled water pipe insulation degraded causing puddles in corridor",
+    "description": "Observed in Vasisht (Fluid Mechanics Lab). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-15T21:17:54.518646",
+    "assigned_technician": "A. More (HVAC Specialist)",
+    "ai_diagnosis": {
+      "category": "HVAC / Cooling",
+      "severity": "Moderate",
+      "hazard_detected": true,
+      "hazard_type": "Slip Hazard",
+      "required_technician": "A. More (HVAC Specialist)",
+      "confidence_score": 91,
+      "recommended_actions": [
+        "Isolate power or service to Fluid Mechanics Lab",
+        "Dispatch A. More (HVAC Specialist) with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6108",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Mechanical Engineering",
+    "building": "Dhruv",
+    "room": "CAD/CAM Studio 102",
+    "title": "Central air handling unit (AHU) belt snapped on 4th floor",
+    "description": "Observed in Dhruv (CAD/CAM Studio 102). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Dispatched",
+    "timestamp": "2026-08-15T11:17:54.518646",
+    "assigned_technician": "Estate HVAC Lead",
+    "ai_diagnosis": {
+      "category": "HVAC / Cooling",
+      "severity": "High",
+      "hazard_detected": false,
+      "hazard_type": "None",
+      "required_technician": "Estate HVAC Lead",
+      "confidence_score": 99,
+      "recommended_actions": [
+        "Isolate power or service to CAD/CAM Studio 102",
+        "Dispatch Estate HVAC Lead with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6109",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Civil Engineering",
+    "building": "Jamdagni",
+    "room": "Server Room 1",
+    "title": "Main core switch rack dropped all 10G SFP+ uplink ports",
+    "description": "Observed in Jamdagni (Server Room 1). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Resolved",
+    "timestamp": "2026-08-14T21:17:54.518646",
+    "assigned_technician": "M. Kulkarni (Systems Admin)",
+    "ai_diagnosis": {
+      "category": "IT Infrastructure",
+      "severity": "Critical",
+      "hazard_detected": true,
+      "hazard_type": "Campus Network Outage",
+      "required_technician": "M. Kulkarni (Systems Admin)",
+      "confidence_score": 90,
+      "recommended_actions": [
+        "Isolate power or service to Server Room 1",
+        "Dispatch M. Kulkarni (Systems Admin) with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    },
+    "resolved_at": "2026-08-15T15:17:54.518646"
+  },
+  {
+    "id": "INC-6110",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Electronics & Communication",
+    "building": "Maitreyi",
+    "room": "LH-201",
+    "title": "Interactive smart display HDMI & touch sensor unresponsive",
+    "description": "Observed in Maitreyi (LH-201). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Dispatched",
+    "timestamp": "2026-08-13T21:17:54.518646",
+    "assigned_technician": "Campus IT Desk",
+    "ai_diagnosis": {
+      "category": "IT Infrastructure",
+      "severity": "Moderate",
+      "hazard_detected": false,
+      "hazard_type": "None",
+      "required_technician": "Campus IT Desk",
+      "confidence_score": 90,
+      "recommended_actions": [
+        "Isolate power or service to LH-201",
+        "Dispatch Campus IT Desk with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6111",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Computer Science",
+    "building": "Chanakya",
+    "room": "LH-405",
+    "title": "Wi-Fi 6 AP lost PoE power after storm, corridor blind spot",
+    "description": "Observed in Chanakya (LH-405). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-13T11:17:54.518646",
+    "assigned_technician": "Network Admin",
+    "ai_diagnosis": {
+      "category": "IT Infrastructure",
+      "severity": "Low",
+      "hazard_detected": false,
+      "hazard_type": "None",
+      "required_technician": "Network Admin",
+      "confidence_score": 93,
+      "recommended_actions": [
+        "Isolate power or service to LH-405",
+        "Dispatch Network Admin with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6112",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Information Technology",
+    "building": "Vyasa",
+    "room": "Seminar Hall 2",
+    "title": "Classroom wall network patch panel socket pins bent",
+    "description": "Observed in Vyasa (Seminar Hall 2). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Dispatched",
+    "timestamp": "2026-08-12T21:17:54.518646",
+    "assigned_technician": "Campus IT Desk",
+    "ai_diagnosis": {
+      "category": "IT Infrastructure",
+      "severity": "Low",
+      "hazard_detected": false,
+      "hazard_type": "None",
+      "required_technician": "Campus IT Desk",
+      "confidence_score": 97,
+      "recommended_actions": [
+        "Isolate power or service to Seminar Hall 2",
+        "Dispatch Campus IT Desk with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6113",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Mechanical Engineering",
+    "building": "Vivekananda",
+    "room": "Auditorium Main",
+    "title": "Hydraulic shear machine pressure gauge fluctuating wildly",
+    "description": "Observed in Vivekananda (Auditorium Main). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Dispatched",
+    "timestamp": "2026-08-12T04:17:54.518646",
+    "assigned_technician": "P. Shinde (Lab In-charge)",
+    "ai_diagnosis": {
+      "category": "Machinery & Equipment",
+      "severity": "High",
+      "hazard_detected": true,
+      "hazard_type": "High Pressure Failure Risk",
+      "required_technician": "P. Shinde (Lab In-charge)",
+      "confidence_score": 98,
+      "recommended_actions": [
+        "Isolate power or service to Auditorium Main",
+        "Dispatch P. Shinde (Lab In-charge) with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6114",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Civil Engineering",
+    "building": "Ganga",
+    "room": "Faculty Cabin 3B",
+    "title": "CNC milling spindle overheating warning light blinking red",
+    "description": "Observed in Ganga (Faculty Cabin 3B). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-11T05:17:54.518646",
+    "assigned_technician": "Mechanical Workshop Head",
+    "ai_diagnosis": {
+      "category": "Machinery & Equipment",
+      "severity": "Critical",
+      "hazard_detected": true,
+      "hazard_type": "Spindle Seizure Risk",
+      "required_technician": "Mechanical Workshop Head",
+      "confidence_score": 90,
+      "recommended_actions": [
+        "Isolate power or service to Faculty Cabin 3B",
+        "Dispatch Mechanical Workshop Head with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6115",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Electronics & Communication",
+    "building": "Gargi",
+    "room": "Chemistry Lab 4",
+    "title": "Lathe motor drive belt loose causing uneven vibration",
+    "description": "Observed in Gargi (Chemistry Lab 4). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-10T19:17:54.518646",
+    "assigned_technician": "Workshop Technician",
+    "ai_diagnosis": {
+      "category": "Machinery & Equipment",
+      "severity": "Moderate",
+      "hazard_detected": false,
+      "hazard_type": "None",
+      "required_technician": "Workshop Technician",
+      "confidence_score": 89,
+      "recommended_actions": [
+        "Isolate power or service to Chemistry Lab 4",
+        "Dispatch Workshop Technician with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6116",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Computer Science",
+    "building": "Vasisht",
+    "room": "Physics Lab 2",
+    "title": "3D printer hotend heater cartridge thermal runaway detected",
+    "description": "Observed in Vasisht (Physics Lab 2). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Dispatched",
+    "timestamp": "2026-08-09T21:17:54.518646",
+    "assigned_technician": "FabLab Technician",
+    "ai_diagnosis": {
+      "category": "Machinery & Equipment",
+      "severity": "High",
+      "hazard_detected": true,
+      "hazard_type": "Thermal Runaway Fire Risk",
+      "required_technician": "FabLab Technician",
+      "confidence_score": 95,
+      "recommended_actions": [
+        "Isolate power or service to Physics Lab 2",
+        "Dispatch FabLab Technician with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6117",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Information Technology",
+    "building": "Dhruv",
+    "room": "Library 3rd Floor",
+    "title": "Overhead water storage tank overflow float valve malfunctioned",
+    "description": "Observed in Dhruv (Library 3rd Floor). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-09T06:17:54.518646",
+    "assigned_technician": "Campus Plumber",
+    "ai_diagnosis": {
+      "category": "Civil & Plumbing",
+      "severity": "Moderate",
+      "hazard_detected": true,
+      "hazard_type": "Water Wastage & Flooding",
+      "required_technician": "Campus Plumber",
+      "confidence_score": 90,
+      "recommended_actions": [
+        "Isolate power or service to Library 3rd Floor",
+        "Dispatch Campus Plumber with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6118",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Mechanical Engineering",
+    "building": "Jamdagni",
+    "room": "IoT Innovation Center",
+    "title": "Restroom drainage blockage causing water stagnation",
+    "description": "Observed in Jamdagni (IoT Innovation Center). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-08T21:17:54.518646",
+    "assigned_technician": "Plumbing Crew",
+    "ai_diagnosis": {
+      "category": "Civil & Plumbing",
+      "severity": "High",
+      "hazard_detected": true,
+      "hazard_type": "Biohazard & Sanitation Risk",
+      "required_technician": "Plumbing Crew",
+      "confidence_score": 97,
+      "recommended_actions": [
+        "Isolate power or service to IoT Innovation Center",
+        "Dispatch Plumbing Crew with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6119",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Civil Engineering",
+    "building": "Maitreyi",
+    "room": "VLSI Lab 301",
+    "title": "Cracked structural window pane on 3rd floor exterior facade",
+    "description": "Observed in Maitreyi (VLSI Lab 301). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Resolved",
+    "timestamp": "2026-08-08T04:17:54.518646",
+    "assigned_technician": "S. Jadhav (Civil Works)",
+    "ai_diagnosis": {
+      "category": "Civil & Plumbing",
+      "severity": "Critical",
+      "hazard_detected": true,
+      "hazard_type": "Falling Glass Hazard",
+      "required_technician": "S. Jadhav (Civil Works)",
+      "confidence_score": 89,
+      "recommended_actions": [
+        "Isolate power or service to VLSI Lab 301",
+        "Dispatch S. Jadhav (Civil Works) with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    },
+    "resolved_at": "2026-08-08T14:17:54.518646"
+  },
+  {
+    "id": "INC-6120",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Electronics & Communication",
+    "building": "Chanakya",
+    "room": "Embedded Systems Lab",
+    "title": "Classroom door hydraulic hinge detached from concrete frame",
+    "description": "Observed in Chanakya (Embedded Systems Lab). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-07T06:17:54.518646",
+    "assigned_technician": "Carpentry & Civil Crew",
+    "ai_diagnosis": {
+      "category": "Civil & Plumbing",
+      "severity": "Moderate",
+      "hazard_detected": true,
+      "hazard_type": "Pinch Hazard",
+      "required_technician": "Carpentry & Civil Crew",
+      "confidence_score": 95,
+      "recommended_actions": [
+        "Isolate power or service to Embedded Systems Lab",
+        "Dispatch Carpentry & Civil Crew with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6121",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Computer Science",
+    "building": "Vyasa",
+    "room": "DSP Lab 204",
+    "title": "Chemical fume hood suction velocity below permissible limits",
+    "description": "Observed in Vyasa (DSP Lab 204). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Dispatched",
+    "timestamp": "2026-08-06T18:17:54.518646",
+    "assigned_technician": "Hazmat Safety Officer",
+    "ai_diagnosis": {
+      "category": "Safety & Hazards",
+      "severity": "Critical",
+      "hazard_detected": true,
+      "hazard_type": "Toxic Vapour Accumulation",
+      "required_technician": "Hazmat Safety Officer",
+      "confidence_score": 89,
+      "recommended_actions": [
+        "Isolate power or service to DSP Lab 204",
+        "Dispatch Hazmat Safety Officer with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6122",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Information Technology",
+    "building": "Vivekananda",
+    "room": "Robotics Bay A",
+    "title": "Emergency exit staircase fire door latch stuck in locked state",
+    "description": "Observed in Vivekananda (Robotics Bay A). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Dispatched",
+    "timestamp": "2026-08-05T22:17:54.518646",
+    "assigned_technician": "Campus Safety Marshal",
+    "ai_diagnosis": {
+      "category": "Safety & Hazards",
+      "severity": "Critical",
+      "hazard_detected": true,
+      "hazard_type": "Fire Egress Obstruction",
+      "required_technician": "Campus Safety Marshal",
+      "confidence_score": 98,
+      "recommended_actions": [
+        "Isolate power or service to Robotics Bay A",
+        "Dispatch Campus Safety Marshal with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6123",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Mechanical Engineering",
+    "building": "Ganga",
+    "room": "Workshop C-1",
+    "title": "Expired dry chemical fire extinguisher missing inspection tag",
+    "description": "Observed in Ganga (Workshop C-1). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-05T08:17:54.518646",
+    "assigned_technician": "Safety Inspector",
+    "ai_diagnosis": {
+      "category": "Safety & Hazards",
+      "severity": "Moderate",
+      "hazard_detected": false,
+      "hazard_type": "None",
+      "required_technician": "Safety Inspector",
+      "confidence_score": 93,
+      "recommended_actions": [
+        "Isolate power or service to Workshop C-1",
+        "Dispatch Safety Inspector with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6124",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Civil Engineering",
+    "building": "Gargi",
+    "room": "Fluid Mechanics Lab",
+    "title": "Chemical storage cabinet exhaust fan stopped spinning",
+    "description": "Observed in Gargi (Fluid Mechanics Lab). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Resolved",
+    "timestamp": "2026-08-04T21:17:54.518646",
+    "assigned_technician": "Hazmat Safety Officer",
+    "ai_diagnosis": {
+      "category": "Safety & Hazards",
+      "severity": "Critical",
+      "hazard_detected": true,
+      "hazard_type": "Flammable Gas Buildup",
+      "required_technician": "Hazmat Safety Officer",
+      "confidence_score": 99,
+      "recommended_actions": [
+        "Isolate power or service to Fluid Mechanics Lab",
+        "Dispatch Hazmat Safety Officer with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    },
+    "resolved_at": "2026-08-05T02:17:54.518646"
+  },
+  {
+    "id": "INC-6125",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Electronics & Communication",
+    "building": "Vasisht",
+    "room": "CAD/CAM Studio 102",
+    "title": "Ceiling acoustic panel sagging directly above lecturer desk",
+    "description": "Observed in Vasisht (CAD/CAM Studio 102). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Dispatched",
+    "timestamp": "2026-08-04T03:17:54.518646",
+    "assigned_technician": "Civil Crew",
+    "ai_diagnosis": {
+      "category": "Civil & Plumbing",
+      "severity": "Moderate",
+      "hazard_detected": true,
+      "hazard_type": "Impact Hazard",
+      "required_technician": "Civil Crew",
+      "confidence_score": 96,
+      "recommended_actions": [
+        "Isolate power or service to CAD/CAM Studio 102",
+        "Dispatch Civil Crew with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6126",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Computer Science",
+    "building": "Dhruv",
+    "room": "Server Room 1",
+    "title": "Water purifier cooler dispensing murky rust-colored water",
+    "description": "Observed in Dhruv (Server Room 1). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-03T14:17:54.518646",
+    "assigned_technician": "Campus Plumber",
+    "ai_diagnosis": {
+      "category": "Civil & Plumbing",
+      "severity": "High",
+      "hazard_detected": true,
+      "hazard_type": "Water Contamination",
+      "required_technician": "Campus Plumber",
+      "confidence_score": 98,
+      "recommended_actions": [
+        "Isolate power or service to Server Room 1",
+        "Dispatch Campus Plumber with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6127",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Information Technology",
+    "building": "Jamdagni",
+    "room": "LH-201",
+    "title": "Audio system ground hum and buzzing during dean address",
+    "description": "Observed in Jamdagni (LH-201). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Resolved",
+    "timestamp": "2026-08-02T19:17:54.518646",
+    "assigned_technician": "AV Support",
+    "ai_diagnosis": {
+      "category": "Audio/Visual",
+      "severity": "Low",
+      "hazard_detected": false,
+      "hazard_type": "None",
+      "required_technician": "AV Support",
+      "confidence_score": 93,
+      "recommended_actions": [
+        "Isolate power or service to LH-201",
+        "Dispatch AV Support with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    },
+    "resolved_at": "2026-08-03T04:17:54.518646"
+  },
+  {
+    "id": "INC-6128",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Mechanical Engineering",
+    "building": "Maitreyi",
+    "room": "LH-405",
+    "title": "Main auditorium stage motorized curtain track jammed midway",
+    "description": "Observed in Maitreyi (LH-405). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Resolved",
+    "timestamp": "2026-08-02T01:17:54.518646",
+    "assigned_technician": "AV Support",
+    "ai_diagnosis": {
+      "category": "Audio/Visual",
+      "severity": "Low",
+      "hazard_detected": false,
+      "hazard_type": "None",
+      "required_technician": "AV Support",
+      "confidence_score": 98,
+      "recommended_actions": [
+        "Isolate power or service to LH-405",
+        "Dispatch AV Support with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    },
+    "resolved_at": "2026-08-02T16:17:54.518646"
+  },
+  {
+    "id": "INC-6129",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Civil Engineering",
+    "building": "Chanakya",
+    "room": "Seminar Hall 2",
+    "title": "Corridor emergency exit LED signage battery backup dead",
+    "description": "Observed in Chanakya (Seminar Hall 2). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-08-01T14:17:54.518646",
+    "assigned_technician": "Electrician",
+    "ai_diagnosis": {
+      "category": "Electrical",
+      "severity": "Moderate",
+      "hazard_detected": false,
+      "hazard_type": "None",
+      "required_technician": "Electrician",
+      "confidence_score": 94,
+      "recommended_actions": [
+        "Isolate power or service to Seminar Hall 2",
+        "Dispatch Electrician with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6130",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Electronics & Communication",
+    "building": "Vyasa",
+    "room": "Auditorium Main",
+    "title": "Laboratory grounding resistance test spiked to dangerous 18 ohms",
+    "description": "Observed in Vyasa (Auditorium Main). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-07-31T19:17:54.518646",
+    "assigned_technician": "Senior Electrician",
+    "ai_diagnosis": {
+      "category": "Electrical",
+      "severity": "Critical",
+      "hazard_detected": true,
+      "hazard_type": "Earth Fault Protection Failure",
+      "required_technician": "Senior Electrician",
+      "confidence_score": 92,
+      "recommended_actions": [
+        "Isolate power or service to Auditorium Main",
+        "Dispatch Senior Electrician with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6131",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Computer Science",
+    "building": "Vivekananda",
+    "room": "Faculty Cabin 3B",
+    "title": "Water supply pipe ruptured inside riser shaft between floors",
+    "description": "Observed in Vivekananda (Faculty Cabin 3B). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Resolved",
+    "timestamp": "2026-07-30T22:17:54.518646",
+    "assigned_technician": "Emergency Plumbing",
+    "ai_diagnosis": {
+      "category": "Civil & Plumbing",
+      "severity": "Critical",
+      "hazard_detected": true,
+      "hazard_type": "Structural Flooding",
+      "required_technician": "Emergency Plumbing",
+      "confidence_score": 91,
+      "recommended_actions": [
+        "Isolate power or service to Faculty Cabin 3B",
+        "Dispatch Emergency Plumbing with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    },
+    "resolved_at": "2026-07-31T09:17:54.518646"
+  },
+  {
+    "id": "INC-6132",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Information Technology",
+    "building": "Ganga",
+    "room": "Chemistry Lab 4",
+    "title": "Computer lab UPS battery bank exhibiting sulfuric acid odor",
+    "description": "Observed in Ganga (Chemistry Lab 4). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Dispatched",
+    "timestamp": "2026-07-30T12:17:54.518646",
+    "assigned_technician": "Battery Maintenance Head",
+    "ai_diagnosis": {
+      "category": "Electrical",
+      "severity": "Critical",
+      "hazard_detected": true,
+      "hazard_type": "Chemical Leak & Explosion Risk",
+      "required_technician": "Battery Maintenance Head",
+      "confidence_score": 92,
+      "recommended_actions": [
+        "Isolate power or service to Chemistry Lab 4",
+        "Dispatch Battery Maintenance Head with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6133",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Mechanical Engineering",
+    "building": "Gargi",
+    "room": "Physics Lab 2",
+    "title": "Digital signal processing lab signal generator calibrator drift",
+    "description": "Observed in Gargi (Physics Lab 2). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "In Active Repair",
+    "timestamp": "2026-07-29T15:17:54.518646",
+    "assigned_technician": "Lab Assistant",
+    "ai_diagnosis": {
+      "category": "Machinery & Equipment",
+      "severity": "Low",
+      "hazard_detected": false,
+      "hazard_type": "None",
+      "required_technician": "Lab Assistant",
+      "confidence_score": 91,
+      "recommended_actions": [
+        "Isolate power or service to Physics Lab 2",
+        "Dispatch Lab Assistant with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6134",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Civil Engineering",
+    "building": "Vasisht",
+    "room": "Library 3rd Floor",
+    "title": "Robotics lab automated guided vehicle (AGV) proximity sensor blind",
+    "description": "Observed in Vasisht (Library 3rd Floor). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Reported",
+    "timestamp": "2026-07-29T04:17:54.518646",
+    "assigned_technician": "Unassigned (AI Pending)",
+    "ai_diagnosis": {
+      "category": "Machinery & Equipment",
+      "severity": "Moderate",
+      "hazard_detected": true,
+      "hazard_type": "Collision Risk",
+      "required_technician": "Robotics Lead",
+      "confidence_score": 94,
+      "recommended_actions": [
+        "Isolate power or service to Library 3rd Floor",
+        "Dispatch Robotics Lead with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    }
+  },
+  {
+    "id": "INC-6135",
+    "student_name": "Suyothan Vijayapandi",
+    "roll_no": "23EC105",
+    "email": "suyothan.vijayapandi@mitwpu.edu.in",
+    "department": "Electronics & Communication",
+    "building": "Dhruv",
+    "room": "IoT Innovation Center",
+    "title": "Solar inverter rooftop disconnect switch handle physically broken",
+    "description": "Observed in Dhruv (IoT Innovation Center). Immediate facility inspection and maintenance dispatch requested.",
+    "image_filename": "incident_sample.jpg",
+    "status": "Resolved",
+    "timestamp": "2026-07-28T13:17:54.518646",
+    "assigned_technician": "Renewable Energy Tech",
+    "ai_diagnosis": {
+      "category": "Electrical",
+      "severity": "High",
+      "hazard_detected": true,
+      "hazard_type": "Isolation Failure Risk",
+      "required_technician": "Renewable Energy Tech",
+      "confidence_score": 94,
+      "recommended_actions": [
+        "Isolate power or service to IoT Innovation Center",
+        "Dispatch Renewable Energy Tech with certified toolkit",
+        "Verify safety protocol compliance"
+      ]
+    },
+    "resolved_at": "2026-07-28T23:17:54.518646"
+  }
+]
