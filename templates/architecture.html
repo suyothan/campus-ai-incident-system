@@ -131,54 +131,5 @@
             </div>
         </div>
     </section>
-
-    <!-- BigQuery Analytical SQL Queries -->
-    <section class="section-container">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title"><i class="fa-solid fa-code"></i> BigQuery Analytical SQL Queries</h2>
-                <p class="section-desc">The SQL logic powering the campus breakdown heatmaps, resolution velocity, and safety metrics.</p>
-            </div>
-        </div>
-
-        <div class="code-preview-card">
-            <div class="code-header">
-                <span>SQL Query 1: Mean Time to Resolution (MTTR) & Incident Velocity</span>
-                <button class="btn-copy" onclick="navigator.clipboard.writeText(document.getElementById('sql1').innerText); alert('Copied to clipboard!')">Copy</button>
-            </div>
-            <pre><code id="sql1">-- BigQuery MTTR & Velocity Analysis
-SELECT 
-    department,
-    COUNT(incident_id) AS total_incidents,
-    COUNTIF(severity = 'Critical') AS critical_hazards,
-    ROUND(AVG(TIMESTAMP_DIFF(resolved_at, created_at, MINUTE)) / 60.0, 2) AS avg_resolution_hours,
-    ROUND(COUNTIF(status = 'Resolved') * 100.0 / COUNT(incident_id), 1) AS resolution_rate_pct
-FROM 
-    `college-events-cc.campus_incidents_analytics.incident_events`
-GROUP BY 
-    department
-ORDER BY 
-    total_incidents DESC;</code></pre>
-        </div>
-
-        <div class="code-preview-card" style="margin-top: 1rem;">
-            <div class="code-header">
-                <span>SQL Query 2: Campus Building Incident Heatmap & Recurring Risk Analysis</span>
-                <button class="btn-copy" onclick="navigator.clipboard.writeText(document.getElementById('sql2').innerText); alert('Copied to clipboard!')">Copy</button>
-            </div>
-            <pre><code id="sql2">-- BigQuery Building Breakdown Heatmap
-SELECT 
-    building,
-    category,
-    COUNT(1) AS failure_frequency,
-    ARRAY_AGG(room ORDER BY created_at DESC LIMIT 3) AS frequent_failure_locations
-FROM 
-    `college-events-cc.campus_incidents_analytics.incident_events`
-GROUP BY 
-    building, category
-ORDER BY 
-    failure_frequency DESC;</code></pre>
-        </div>
-    </section>
 </div>
 {% endblock %}
