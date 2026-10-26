@@ -10,7 +10,7 @@
     "title": "Loose terminal block with active sparking on 3-phase supply",
     "description": "Observed in Maitreyi (IoT Innovation Center). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-20T06:17:54.518646",
     "assigned_technician": "Senior Electrician",
     "ai_diagnosis": {
@@ -124,7 +124,7 @@
     "title": "Ceiling HVAC duct leaking condensation near main server rack",
     "description": "Observed in Ganga (Robotics Bay A). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-17T10:17:54.518646",
     "assigned_technician": "A. More (HVAC Specialist)",
     "ai_diagnosis": {
@@ -181,7 +181,7 @@
     "title": "Chilled water pipe insulation degraded causing puddles in corridor",
     "description": "Observed in Vasisht (Fluid Mechanics Lab). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-15T21:17:54.518646",
     "assigned_technician": "A. More (HVAC Specialist)",
     "ai_diagnosis": {
@@ -294,7 +294,7 @@
     "title": "Wi-Fi 6 AP lost PoE power after storm, corridor blind spot",
     "description": "Observed in Chanakya (LH-405). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-13T11:17:54.518646",
     "assigned_technician": "Network Admin",
     "ai_diagnosis": {
@@ -378,7 +378,7 @@
     "title": "CNC milling spindle overheating warning light blinking red",
     "description": "Observed in Ganga (Faculty Cabin 3B). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-11T05:17:54.518646",
     "assigned_technician": "Mechanical Workshop Head",
     "ai_diagnosis": {
@@ -406,7 +406,7 @@
     "title": "Lathe motor drive belt loose causing uneven vibration",
     "description": "Observed in Gargi (Chemistry Lab 4). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-10T19:17:54.518646",
     "assigned_technician": "Workshop Technician",
     "ai_diagnosis": {
@@ -462,7 +462,7 @@
     "title": "Overhead water storage tank overflow float valve malfunctioned",
     "description": "Observed in Dhruv (Library 3rd Floor). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-09T06:17:54.518646",
     "assigned_technician": "Campus Plumber",
     "ai_diagnosis": {
@@ -490,7 +490,7 @@
     "title": "Restroom drainage blockage causing water stagnation",
     "description": "Observed in Jamdagni (IoT Innovation Center). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-08T21:17:54.518646",
     "assigned_technician": "Plumbing Crew",
     "ai_diagnosis": {
@@ -547,7 +547,7 @@
     "title": "Classroom door hydraulic hinge detached from concrete frame",
     "description": "Observed in Chanakya (Embedded Systems Lab). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-07T06:17:54.518646",
     "assigned_technician": "Carpentry & Civil Crew",
     "ai_diagnosis": {
@@ -631,7 +631,7 @@
     "title": "Expired dry chemical fire extinguisher missing inspection tag",
     "description": "Observed in Ganga (Workshop C-1). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-05T08:17:54.518646",
     "assigned_technician": "Safety Inspector",
     "ai_diagnosis": {
@@ -716,7 +716,7 @@
     "title": "Water purifier cooler dispensing murky rust-colored water",
     "description": "Observed in Dhruv (Server Room 1). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-03T14:17:54.518646",
     "assigned_technician": "Campus Plumber",
     "ai_diagnosis": {
@@ -802,7 +802,7 @@
     "title": "Corridor emergency exit LED signage battery backup dead",
     "description": "Observed in Chanakya (Seminar Hall 2). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-08-01T14:17:54.518646",
     "assigned_technician": "Electrician",
     "ai_diagnosis": {
@@ -830,7 +830,7 @@
     "title": "Laboratory grounding resistance test spiked to dangerous 18 ohms",
     "description": "Observed in Vyasa (Auditorium Main). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-07-31T19:17:54.518646",
     "assigned_technician": "Senior Electrician",
     "ai_diagnosis": {
@@ -915,7 +915,7 @@
     "title": "Digital signal processing lab signal generator calibrator drift",
     "description": "Observed in Gargi (Physics Lab 2). Immediate facility inspection and maintenance dispatch requested.",
     "image_filename": "incident_sample.jpg",
-    "status": "In Active Repair",
+    "status": "In Repair",
     "timestamp": "2026-07-29T15:17:54.518646",
     "assigned_technician": "Lab Assistant",
     "ai_diagnosis": {

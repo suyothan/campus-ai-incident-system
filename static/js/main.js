@@ -206,6 +206,15 @@ async function fetchAndRenderKanban() {
     }
 }
 
+function normalizeStatus(status) {
+    if (!status) return "Reported";
+    const s = String(status).trim().toLowerCase();
+    if (s.includes("repair") || s.includes("active")) return "In Repair";
+    if (s.includes("dispatch")) return "Dispatched";
+    if (s.includes("resolv") || s.includes("close")) return "Resolved";
+    return "Reported";
+}
+
 function renderKanban(incidents) {
     const cols = {
         "Reported": document.getElementById("colReported"),
@@ -221,7 +230,7 @@ function renderKanban(incidents) {
     const counts = { "Reported": 0, "Dispatched": 0, "In Repair": 0, "Resolved": 0 };
 
     incidents.forEach(inc => {
-        const status = inc.status || "Reported";
+        const status = normalizeStatus(inc.status);
         counts[status] = (counts[status] || 0) + 1;
         const targetCol = cols[status] || cols["Reported"];
 
@@ -272,15 +281,16 @@ function renderKanban(incidents) {
     document.getElementById("countResolved").textContent = counts["Resolved"] || 0;
 }
 
-function getNextStageButton(id, currentStatus) {
+function getNextStageButton(id, rawStatus) {
+    const currentStatus = normalizeStatus(rawStatus);
     if (currentStatus === "Reported") {
         return `<button class="btn-move-stage" onclick="updateIncidentStage('${id}', 'Dispatched')">Dispatch &rarr;</button>`;
     } else if (currentStatus === "Dispatched") {
         return `<button class="btn-move-stage" onclick="updateIncidentStage('${id}', 'In Repair')">Start Repair &rarr;</button>`;
     } else if (currentStatus === "In Repair") {
-        return `<button class="btn-move-stage" style="background: rgba(16, 185, 129, 0.2); color: #4ade80;" onclick="updateIncidentStage('${id}', 'Resolved')">Resolve &check;</button>`;
+        return `<button class="btn-move-stage" style="background: rgba(16, 185, 129, 0.2); color: #10b981;" onclick="updateIncidentStage('${id}', 'Resolved')">Resolve &check;</button>`;
     } else {
-        return `<small style="color: #4ade80; font-weight: 700;">Closed</small>`;
+        return `<small style="color: #10b981; font-weight: 700;">Closed</small>`;
     }
 }
 
